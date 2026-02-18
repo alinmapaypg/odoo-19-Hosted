@@ -1,35 +1,13 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-import hmac
-import logging
 import pprint
 import logging
-import requests
-from odoo import fields, http, _
-from odoo.http import request, route
-
-import werkzeug
-from odoo.exceptions import AccessError, MissingError, UserError, ValidationError
-from odoo.fields import Command
-from odoo.http import request, route
-from odoo.tools import SQL
-
 from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import padding
-import hashlib
 import json
-from decimal import Decimal
-from odoo.addons.website_sale.controllers.payment import PaymentPortal
-from datetime import datetime
-
-from odoo.exceptions import AccessError, UserError, ValidationError
-
-from werkzeug.utils import redirect
-from werkzeug.exceptions import Forbidden
 import base64
 from odoo import http
-from psycopg2.errors import LockNotAvailable
 from odoo.exceptions import ValidationError
 from odoo.http import request
 

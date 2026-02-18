@@ -22,6 +22,13 @@ class PaymentProvider(models.Model):
     alinma_merchant_key = fields.Char('Merchant Key', required_if_provider='alinma',)
     alinma_url = fields.Char('URL', required_if_provider='alinma',)
 
+    def _get_default_payment_method_codes(self):
+        """ Override of `payment` to return the default payment method codes. """
+        self.ensure_one()
+        if self.code != 'alinma':
+            return super()._get_default_payment_method_codes()
+        return const.DEFAULT_PAYMENT_METHOD_CODES
+
     def _alinma_get_api_url(self):
         if self.state == 'enabled':
             return self.alinma_url
